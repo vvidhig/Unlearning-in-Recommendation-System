@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.env
+.ipynb_checkpoints/
+
+
+# macOS
+.DS_Store
+
+
+# PyTorch
+*.pt
+*.pth
+
+
+# Logs / outputs
+logs/
+checkpoints/
+results/
+
+
+# IDE / Editor
+.vscode/
+.idea/
+
+
+# Jupyter
+*.ipynb
