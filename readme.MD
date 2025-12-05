@@ -115,6 +115,20 @@ Per-shard performance heatmap.
 
 Comparison table: Full retrain vs SISA vs SISA+checkpoints (if implemented).
 
+
+This is something I want to include :
+
+Compute top-K recommendations for each user before the event (baseline).
+
+Trigger event: (a) forget a user (remove interactions) or (b) simulate attack (add malicious interactions).
+
+Retrain (or unlearn via SISA) to get post-event model.
+
+Compute top-K after.
+
+Measure change with Jaccard@K between pre/post lists per user, and summarize (mean, histogram, fraction of users with Jaccard < threshold). Optionally compute rank changes or NDCG delta.
+
+
 Core / required improvements (makes your prototype solid)
 
 Fix training loop & logging (use DataLoader, average loss, seed everything).
@@ -148,15 +162,3 @@ Shard agents: each shard exposes metrics (validation loss, last checkpoint time,
 Ensemble-weight agents: after training, each shard agent proposes a weight for ensemble predictions (based on validation performance). A small RL agent could learn weights that maximize validation accuracy — but you can start with greedy / softmax weighting.
 
 Active unlearning agent: an agent that, given a budget (time/resources), chooses which forgotten requests to process first to minimize global harm. This is conceptual but great to present as future work.
-
-This is something I want to include :
-
-Compute top-K recommendations for each user before the event (baseline).
-
-Trigger event: (a) forget a user (remove interactions) or (b) simulate attack (add malicious interactions).
-
-Retrain (or unlearn via SISA) to get post-event model.
-
-Compute top-K after.
-
-Measure change with Jaccard@K between pre/post lists per user, and summarize (mean, histogram, fraction of users with Jaccard < threshold). Optionally compute rank changes or NDCG delta.
