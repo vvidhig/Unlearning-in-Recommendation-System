@@ -31,7 +31,7 @@ python group.py       # create groups/shards
 python main.py        # train and run unlearning
 ````
 
-### Examples (if CLI arguments are enabled in main.py):
+### Examples :
 
 ```bash
 # Full model (no grouping)
@@ -44,7 +44,7 @@ python main.py --group 5 --epochs 50
 python main.py --group 5 --epochs 30 --unlearn_group 1
 ```
 
-### Typical output looks like:
+### Output I got for baseline
 
 ```text
 Loading data...
