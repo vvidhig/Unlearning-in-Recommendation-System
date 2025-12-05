@@ -35,8 +35,14 @@ class MatrixFactorization(nn.Module):
 class UltraRE:
     def __init__(self, config):
         self.config = config
-        self.device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
+        if torch.cuda.is_available():
+            self.device = torch.device("cuda")
+        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+            self.device = torch.device("mps")
+        else:
+            self.device = torch.device("cpu")
         print(f"Using device: {self.device}")
+
 
     def train_model(self, train_data, num_users, num_items, epochs=50):
         """Train the recommendation model"""
